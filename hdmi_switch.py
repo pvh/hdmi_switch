@@ -18,12 +18,12 @@ serial_commands = {
 
 @app.route("/")
 def hello():
-    return "Hello switch!"
+    return "Hello from the switch!"
 
 @app.route("/change/<input>/<output>")
 def change(input, output):
     ser.write(bytearray.fromhex(serial_commands[input+output]));
-    return "Changed!"
+    return "Changed to " + input + "/" + output +"!"
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=1337)
